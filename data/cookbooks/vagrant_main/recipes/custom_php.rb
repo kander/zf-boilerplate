@@ -65,36 +65,43 @@ end
 
 execute "PEAR: install phpmd/PHP_PMD" do
   command "pear install -f phpmd/PHP_PMD"
+  creates "/usr/bin/phpmd"
 end
 
 execute "PEAR: install pdepend/PHP_Depend" do
   command "pear install -f pdepend/PHP_Depend"
+  creates "/usr/bin/pdepend"
 end
 
 execute "PEAR: install PHP_CodeSniffer-1.3.0" do
   command "pear install -f PHP_CodeSniffer-1.3.0"
+  creates "/usr/bin/phpcs"
 end
 
 execute "PEAR: install phploc-1.5.0" do
   command "pear install -f phpunit/phploc"
+  creates "/usr/bin/phploc"
 end
 
 execute "PECL: install xdebug" do
   command "pecl install -f xdebug"
+  creates "/usr/lib/php5/20090626/xdebug.so"
 end
 
 execute "PEAR: install phpcpd" do
   command "pear install -f phpunit/phpcpd"
+  creates "/usr/bin/phpcpd"
 end
 
 execute "PEAR: install docblox" do
   command "pear install -f docblox/DocBlox"
+  creates "/usr/bin/docblox"
 end
 
 execute "PEAR: install phd" do
   command "pear install -f --alldeps doc.php.net/phd"
+  creates "/usr/bin/phd"
 end
-
 
 # Install xDebug
 php_pear "xdebug" do
