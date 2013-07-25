@@ -80,7 +80,7 @@ execute "PEAR: install phploc-1.5.0" do
 end
 
 execute "PECL: install xdebug" do
-  command "pecl install xdebug"
+  command "pecl install -f xdebug"
 end
 
 execute "PEAR: install phpcpd" do

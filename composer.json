@@ -1,0 +1,26 @@
+{
+    "name": "kander/zf-boilerplate",
+    "description": "A version fo Zend Framework Boilerplate aimed at increasing manageability of the included libraries.",
+    "license": "GPL",
+    "authors": [
+        {
+            "name": "Sander Bol",
+            "email": "kander@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "zendframework/zendframework1": "1.12.3",
+        "doctrine/orm": "2.1.3"
+    },
+    "autoload": {
+        "psr-0": {
+            "Boilerplate_": "library/",
+            "Elastica_": "library/",
+            "Bisna\\": "library/",
+            "Doctrine\\": "library/",
+            "App\\": "library/",
+            "EasyBib_": "library/"
+        }
+    }
+}

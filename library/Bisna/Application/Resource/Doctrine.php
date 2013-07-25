@@ -43,7 +43,7 @@ class Bisna_Application_Resource_Doctrine extends \Zend_Application_Resource_Res
         $config = $this->getOptions();
         
         // Bootstrapping Doctrine autoloaders
-        $this->registerAutoloaders($config);
+        // $this->registerAutoloaders($config);
         
         // Starting Doctrine container
         $container = new Container\DoctrineContainer($config);

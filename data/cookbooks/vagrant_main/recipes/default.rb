@@ -8,7 +8,7 @@ include_recipe "apache2::mod_deflate"
 include_recipe "apache2::mod_headers"
 require_recipe "mysql::server"
 require_recipe "vagrant_main::custom_php"
-require_recipe "elasticsearch"
+# require_recipe "elasticsearch"
 require_recipe "ant"
 require_recipe "memcached"
 

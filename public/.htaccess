@@ -460,20 +460,20 @@ Options -Indexes
 # php_flag expose_php Off
 
 # Level of log detail - log all errors
-# php_value error_reporting -1
+php_value error_reporting -1
 
 # Write errors to log file
-# php_flag log_errors On
+php_flag log_errors On
 
 # Do not display errors in browser (production - Off, development - On)
-# php_flag display_errors Off
+php_flag display_errors On
 
 # Do not display startup errors (production - Off, development - On)
-# php_flag display_startup_errors Off
+php_flag display_startup_errors On
 
 # Format errors in plain text
 # Note: Leave this setting 'On' for xdebug's var_dump() output
-# php_flag html_errors Off
+php_flag html_errors On
 
 # Show multiple occurrence of error
 # php_flag ignore_repeated_errors Off

@@ -10,7 +10,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
     public function _initAutoloaderNamespaces()
     {
         require_once APPLICATION_PATH .
-            '/../library/Doctrine/Common/ClassLoader.php';
+            '/../vendor/doctrine/common/lib/Doctrine/Common/ClassLoader.php';
 
         require_once APPLICATION_PATH .
             '/../library/Symfony/Component/Di/sfServiceContainerAutoloader.php';
