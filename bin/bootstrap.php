@@ -1,4 +1,5 @@
 <?php
+require_once __DIR__ . '/../vendor/autoload.php';
 
 // Define path to application directory
 defined('APPLICATION_PATH')
@@ -14,9 +15,6 @@ set_include_path(implode(PATH_SEPARATOR, array(
     get_include_path(),
 )));
 
-include "Zend/Loader/Autoloader.php";
-Zend_Loader_Autoloader::getInstance();
-
 // Creating application
 $application = new Zend_Application(
     APPLICATION_ENV,
@@ -24,4 +22,6 @@ $application = new Zend_Application(
 );
 
 // Bootstrapping resources
+spl_autoload_unregister(array('Zend_Loader_Autoloader','autoload'));
+
 $application->bootstrap();
