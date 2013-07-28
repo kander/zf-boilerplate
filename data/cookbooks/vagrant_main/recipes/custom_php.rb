@@ -36,11 +36,6 @@ php_pear_channel "pear.michelf.com" do
   action :discover
 end
 
-# using apt
-package "phpunit" do
-  action :install
-end
-
 # XSL needed by DocBlox
 package "php5-xsl" do
   action :install
@@ -56,11 +51,15 @@ package "php5-sqlite" do
   action :install
 end
 
-
 # Using PEAR installer
 
 execute "PEAR: upgrade all packages" do
   command "pear upgrade-all"
+end
+
+execute "PEAR: install phpunit/PHPUnit" do
+  command "pear install -f phpunit/PHPUnit"
+  creates "/usr/bin/phpunit"
 end
 
 execute "PEAR: install phpmd/PHP_PMD" do
@@ -101,6 +100,11 @@ end
 execute "PEAR: install phd" do
   command "pear install -f --alldeps doc.php.net/phd"
   creates "/usr/bin/phd"
+end
+
+execute "PEAR: install CodeCoverage" do
+  command "pear install pear.phpunit.de/PHP_CodeCoverage"
+  creates "/usr/share/php/PHP/CodeCoverage.php"
 end
 
 # Install xDebug

@@ -18,9 +18,9 @@ class CallsTest extends \PHPUnit_Framework_TestCase {
         $calls = new Calls();
         $request = new \App_Webservice_Types_Request_RandomQuoteRequest();
         $response = $calls->randomQuote($request);
-        $this->assertType('App_Webservice_Types_Response_RandomQuoteResponse', $response);
-        $this->assertType('string', $response->quote->wording);
-        $this->assertType('string', $response->quote->author);
+        $this->assertInstanceOf('App_Webservice_Types_Response_RandomQuoteResponse', $response);
+        $this->assertInternalType('string', $response->quote->wording);
+        $this->assertInternalType('string', $response->quote->author);
     }
 
     public function testQuote()
@@ -29,9 +29,9 @@ class CallsTest extends \PHPUnit_Framework_TestCase {
         $request = new \App_Webservice_Types_Request_QuoteRequest();
         $request->id = 1;
         $response = $calls->quote($request);
-        $this->assertType('App_Webservice_Types_Response_QuoteResponse', $response);
-        $this->assertType('string', $response->quote->wording);
-        $this->assertType('string', $response->quote->author);
+        $this->assertInstanceOf('App_Webservice_Types_Response_QuoteResponse', $response);
+        $this->assertInternalType('string', $response->quote->wording);
+        $this->assertInternalType('string', $response->quote->author);
     }
 
 }
