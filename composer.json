@@ -30,6 +30,7 @@
         "ruflin/elastica": "v0.19.0.0",
         "doctrine/migrations": "dev-master"
         "doctrine/migrations": "dev-master",
+        "emagister/zend-form-decorators-bootstrap": "dev-master",
         "tpc2/phpRack": "1.0.0",
     },
     "autoload": {
@@ -38,7 +39,6 @@
             "Bisna\\": "library/",
             "Doctrine\\": "library/",
             "App\\": "library/",
-            "EasyBib_": "library/",
             "Symfony\\": "library/"
         }
     }

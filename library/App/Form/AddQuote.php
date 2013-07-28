@@ -9,7 +9,7 @@
 
 namespace App\Form;
 
-class AddQuote extends \EasyBib_Form
+class AddQuote extends \Twitter_Bootstrap_Form_Horizontal
 {
     public function init()
     {
@@ -18,24 +18,20 @@ class AddQuote extends \EasyBib_Form
         $this->setAction($this->getView()->baseUrl('/index/add-custom'));
         $this->setAttrib('id', 'addQuote');
 
-        $quote = new \Zend_Form_Element_Textarea('quote');
-        $name = new \Zend_Form_Element_Text('name');
-        $submit = new \Zend_Form_Element_Button('submit');
+        $this->addElement('textarea', 'quote', array(
+            'label' => 'Your wise words:',
+            'rows' => 4,
+            'required' => true
+        ));
 
-        $quote->setLabel('Your wise words:')
-            ->setRequired(true)
-            ->setAttrib('rows', '4')
-            ->setTranslator(\Zend_Registry::get('Zend_Translate'));
+        $this->addElement('text', 'name', array(
+            'label' => 'Your name:',
+            'required' => true
+        ));
 
-        $name->setLabel('Your name:')
-            ->setRequired(true);
-
-        $submit->setLabel('List my quote');
-        $this->addElements(array($quote, $name, $submit));
-
-        \EasyBib_Form_Decorator::setFormDecorator(
-            $this, \EasyBib_Form_Decorator::BOOTSTRAP, 'submit'
-        );
+        $this->addElement('submit', 'submit', array(
+            'label' => 'List my quote'
+        ));
     }
 
     public function isValid($data)
