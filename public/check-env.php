@@ -7,4 +7,4 @@ $phpRackConfig = array(
     'dir' => '../tests/rack-tests',
 );
 // absolute path to the bootstrap script on your server
-include '../library/phpRack/bootstrap.php';
+include '../vendor/tpc2/phpRack/phpRack/bootstrap.php';
