@@ -8,6 +8,11 @@ bootstrap your projects with nearly zero work.
 ZF-Boilerplate isn't a framework, nor does it claim to be complete. It's the sum of the latest and greatest libraries,
 tools and scripts to get your ZF based project off the ground quickly and to speed up your development process.
 
+This fork of ZF-Boilerplate differs from the original (by Michael Romer) in that the libraries used are now
+loaded using Composer, making it a breeze to keep them up to date. Please note that the current aim of this fork
+is to fetch all libraries that form ZF-Boilerplate using Composer at the version currently in use by ZF-Boilerplate
+where possible. Once all libraries are composerized, work will start on upgrading them - true to the claim above.
+
 
 Features
 --------
