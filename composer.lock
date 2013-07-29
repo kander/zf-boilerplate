@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "a5a5ffa8ad9812ee71b2e8dcfb884f0d",
+    "hash": "e197cc694d3be61e2fa56fe6157a923e",
     "packages": [
         {
             "name": "doctrine/common",
@@ -240,6 +240,56 @@
             "time": "2011-11-21 07:08:06"
         },
         {
+            "name": "emagister/zend-form-decorators-bootstrap",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Emagister/zend-form-decorators-bootstrap.git",
+                "reference": "323abe0afba89e898d7c1471d606411800277f57"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Emagister/zend-form-decorators-bootstrap/zipball/323abe0afba89e898d7c1471d606411800277f57",
+                "reference": "323abe0afba89e898d7c1471d606411800277f57",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.2.4"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Twitter_": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "include-path": [
+                ""
+            ],
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "EmagisterTech",
+                    "email": "php@emagister.com",
+                    "homepage": "http://engineering.emagister.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Zend_Form decorators for Twitter's Bootstrap UI",
+            "homepage": "https://emagister.github.com/zend-form-decorators-bootstrap",
+            "keywords": [
+                "bootstrap",
+                "twitter",
+                "twitter bootstrap",
+                "zend",
+                "zend form",
+                "zend form decorators"
+            ],
+            "time": "2013-07-12 08:51:54"
+        },
+        {
             "name": "ruflin/elastica",
             "version": "v0.19.0.0",
             "source": {
@@ -279,6 +329,116 @@
                 "search"
             ],
             "time": "2012-03-04 03:25:48"
+        },
+        {
+            "name": "symfony/console",
+            "version": "v2.3.2",
+            "target-dir": "Symfony/Component/Console",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/Console.git",
+                "reference": "v2.3.2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/Console/zipball/v2.3.2",
+                "reference": "v2.3.2",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "require-dev": {
+                "symfony/event-dispatcher": "~2.1"
+            },
+            "suggest": {
+                "symfony/event-dispatcher": ""
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.3-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Symfony\\Component\\Console\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "http://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony Console Component",
+            "homepage": "http://symfony.com",
+            "time": "2013-07-11 19:36:36"
+        },
+        {
+            "name": "symfony/yaml",
+            "version": "v2.3.2",
+            "target-dir": "Symfony/Component/Yaml",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/Yaml.git",
+                "reference": "v2.3.2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/Yaml/zipball/v2.3.2",
+                "reference": "v2.3.2",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.3-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Symfony\\Component\\Yaml\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "http://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony Yaml Component",
+            "homepage": "http://symfony.com",
+            "time": "2013-07-11 19:36:36"
+        },
+        {
+            "name": "tpc2/phpRack",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/tpc2/phprack",
+                "reference": "e0ebc785edd2f01d7e5da5c9e640f8e1df1f9595"
+            },
+            "type": "library"
         },
         {
             "name": "zendframework/zendframework1",
@@ -340,7 +500,8 @@
     ],
     "minimum-stability": "stable",
     "stability-flags": {
-        "doctrine/migrations": 20
+        "doctrine/migrations": 20,
+        "emagister/zend-form-decorators-bootstrap": 20
     },
     "platform": [
 

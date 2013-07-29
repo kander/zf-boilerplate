@@ -31,6 +31,8 @@
         "doctrine/migrations": "dev-master",
         "emagister/zend-form-decorators-bootstrap": "dev-master",
         "tpc2/phpRack": "1.0.0",
+        "symfony/console": "2.*",
+        "symfony/yaml": "2.*"
     },
     "autoload": {
         "psr-0": {
