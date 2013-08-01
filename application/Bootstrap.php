@@ -18,9 +18,6 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
         sfServiceContainerAutoloader::register();
         $autoloader = \Zend_Loader_Autoloader::getInstance();
 
-        $fmmAutoloader = new \Doctrine\Common\ClassLoader('Bisna');
-        $autoloader->pushAutoloader(array($fmmAutoloader, 'loadClass'), 'Bisna');
-        
         $fmmAutoloader = new \Doctrine\Common\ClassLoader('App');
         $autoloader->pushAutoloader(array($fmmAutoloader, 'loadClass'), 'App');
 
@@ -49,6 +46,14 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
         $sc = new sfServiceContainerBuilder();
         $loader = new sfServiceContainerLoaderFileXml($sc);
         $loader->load(APPLICATION_PATH . "/configs/services.xml");
+
+        $this->bootstrap('doctrine');
+        /** @var Bisna\Doctrine\Container $doctrineContainer */
+        $doctrineContainer = $this->getResource('doctrine');
+        $entityManager = $doctrineContainer->getEntityManager();
+
+        $sc->setService('entityManager', $entityManager);
+
         Zend_Registry::set('sc', $sc);
     }
 

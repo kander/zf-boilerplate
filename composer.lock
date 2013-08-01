@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "926fb1aac6cc0a39548b37ab32a00fd9",
+    "hash": "a51b21088590b1861a10803b98465918",
     "packages": [
         {
             "name": "doctrine/common",
@@ -312,6 +312,33 @@
             "time": "2013-07-12 08:51:54"
         },
         {
+            "name": "guilhermeblanco/zendframework1-doctrine2",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/guilhermeblanco/zendframework1-doctrine2.git",
+                "reference": "6a9b31c2a531fb62c608c6b268768d6624929c46"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/guilhermeblanco/zendframework1-doctrine2/zipball/6a9b31c2a531fb62c608c6b268768d6624929c46",
+                "reference": "6a9b31c2a531fb62c608c6b268768d6624929c46",
+                "shasum": ""
+            },
+            "require": {
+                "doctrine/orm": "2.3.x",
+                "zendframework/zendframework1": "~1.9"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Bisna": "library/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "time": "2013-07-22 19:19:45"
+        },
+        {
             "name": "ruflin/elastica",
             "version": "v0.19.0.0",
             "source": {
@@ -523,7 +550,8 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "doctrine/migrations": 20,
-        "emagister/zend-form-decorators-bootstrap": 20
+        "emagister/zend-form-decorators-bootstrap": 20,
+        "guilhermeblanco/zendframework1-doctrine2": 20
     },
     "platform": [
 

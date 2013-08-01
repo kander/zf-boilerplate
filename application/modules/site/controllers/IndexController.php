@@ -5,24 +5,15 @@ class Site_IndexController extends Zend_Controller_Action
 
     /**
      * @var Doctrine\ORM\EntityManager
+     * @InjectService entityManager
      */
-    protected $_em = null;
-
-    /**
-     * @var \sfServiceContainer
-     */
-    protected $_sc = null;
+    protected $entityManager = null;
 
     /**
      * @var \App\Service\RandomQuote
-     * @InjectService RandomQuote
+     * @InjectService randomQuote
      */
     protected $_randomQuote = null;
-
-    public function init()
-    {
-        $this->_em = Zend_Registry::get('em');
-    }
 
     public function searchAction()
     {
@@ -66,8 +57,8 @@ class Site_IndexController extends Zend_Controller_Action
 
         try
         {
-            $this->_em->persist($newQuote);
-            $this->_em->flush();
+            $this->entityManager->persist($newQuote);
+            $this->entityManager->flush();
             $this->indexQuote($newQuote);
         }
         catch (Exception $e)
@@ -91,8 +82,8 @@ class Site_IndexController extends Zend_Controller_Action
                 $newQuote->setAuthor($values['name']);
 
                 try {
-                    $this->_em->persist($newQuote);
-                    $this->_em->flush();
+                    $this->entityManager->persist($newQuote);
+                    $this->entityManager->flush();
                     $this->indexQuote($newQuote);
                 }
                 catch (Exception $e) {
@@ -102,7 +93,7 @@ class Site_IndexController extends Zend_Controller_Action
                 $addQuoteForm->buildBootstrapErrorDecorators();
             }
 
-            $data = $this->_em->getRepository("\App\Entity\Quote")
+            $data = $this->entityManager->getRepository("\App\Entity\Quote")
                     ->findThemAll();
 
             $this->view->data = $data;
@@ -115,13 +106,13 @@ class Site_IndexController extends Zend_Controller_Action
     public function indexAction()
     {
         $addQuoteForm = new \App\Form\AddQuote();
-        $this->view->form = $addQuoteForm;
+        $this->view->assign('form', $addQuoteForm);
         $this->checkSearchindex();
 
         try {
-            $data = $this->_em->getRepository("\App\Entity\Quote")
-                    ->findThemAll();
-            $this->view->data = $data;
+            $entityRepository = $this->entityManager->getRepository('\App\Entity\Quote');
+            $data = $entityRepository->findThemAll();
+            $this->view->assign('data', $data);
         }
         catch (Exception $e) {
             $this->view->databaseError = true;
@@ -178,9 +169,13 @@ class Site_IndexController extends Zend_Controller_Action
         $this->view->navigation($container);
     }
 
+    /**
+     * @todo Somehow the original ZFBP project had a 'cache' key set in the Registry.
+     * This was not done in the Bootstrap... and now it is missing. Where did the cache come from?
+     */
     public function footerAction()
-    { 
-        $cache = Zend_Registry::get('cache');
+    {
+        /*$cache = Zend_Registry::get('cache');
 
         if ($cache->contains('timestamp')) {
             $timestamp = $cache->fetch('timestamp');
@@ -189,7 +184,8 @@ class Site_IndexController extends Zend_Controller_Action
             $timestamp = time();
             $cache->save('timestamp', $timestamp);
         }
-
-        $this->view->timestamp = $timestamp;
+        */
+        $this->view->assign('cachedTimestamp', false);
+        $this->view->assign('timestamp', new Zend_Date());
     }
 }

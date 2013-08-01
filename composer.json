@@ -32,7 +32,8 @@
         "emagister/zend-form-decorators-bootstrap": "dev-master",
         "tpc2/phpRack": "1.0.0",
         "symfony/console": "2.*",
-        "symfony/yaml": "2.*"
+        "symfony/yaml": "2.*",
+        "guilhermeblanco/zendframework1-doctrine2": "dev-master"
     },
     "autoload": {
         "psr-0": {
