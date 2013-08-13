@@ -43,18 +43,26 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 
     public function _initServices()
     {
-        $sc = new sfServiceContainerBuilder();
-        $loader = new sfServiceContainerLoaderFileXml($sc);
-        $loader->load(APPLICATION_PATH . "/configs/services.xml");
+        $diContainer = new Pimple();
 
         $this->bootstrap('doctrine');
         /** @var Bisna\Doctrine\Container $doctrineContainer */
         $doctrineContainer = $this->getResource('doctrine');
         $entityManager = $doctrineContainer->getEntityManager();
 
-        $sc->setService('entityManager', $entityManager);
 
-        Zend_Registry::set('sc', $sc);
+        $diContainer['entityManager'] = $entityManager;
+        Zend_Registry::set('em', $entityManager);
+
+        $diContainer['randomizer'] = $diContainer->share(function($container) {
+            return new App\Service\Randomizer();
+        });
+
+        $diContainer['randomQuote'] = function($container) {
+            return new App\Service\RandomQuote($container['randomizer']);
+        };
+
+        \Zend_Registry::set('pimple', $diContainer);
     }
 
     public function _initLocale()

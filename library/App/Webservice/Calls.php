@@ -1,24 +1,27 @@
 <?php
-/**
- * Created by JetBrains PhpStorm.
- * User: Michael
- * Date: 15.09.11
- * Time: 06:44
- * To change this template use File | Settings | File Templates.
- */
 namespace App\Webservice;
+
+use Doctrine\ORM\EntityManager;
 
 class Calls
 {
+    protected $entityManager;
+
+    public function __construct(EntityManager $entityManager)
+    {
+        $this->entityManager = $entityManager;
+    }
+
     /**
      * Returns a random quote using the RandomQuote Service
-     * @param App_Webservice_Types_Request_RandomQuoteRequest $request
-     * @return  App_Webservice_Types_Response_RandomQuoteResponse $response
+     * @param \App_Webservice_Types_Request_RandomQuoteRequest $request
+     * @return  \App_Webservice_Types_Response_RandomQuoteResponse $response
      */
     public function randomQuote($request)
     {
-        $sc = \Zend_Registry::get('sc');
-        $srv = $sc->getService('randomQuote');
+        $dic = \Zend_Registry::get('pimple');
+        /** @var \App\Service\RandomQuote $srv */
+        $srv = $dic['randomQuote'];
         $quote = $srv->getQuote();
         $response = new \App_Webservice_Types_Response_RandomQuoteResponse();
         $response->quote->wording = $quote[0];
@@ -28,13 +31,13 @@ class Calls
 
     /**
      * Returns a quote from the Database using an ID given
-     * @param App_Webservice_Types_Request_QuoteRequest $request
-     * @return  App_Webservice_Types_Response_QuoteResponse $response
+     * @param \App_Webservice_Types_Request_QuoteRequest $request
+     * @return  \App_Webservice_Types_Response_QuoteResponse $response
      */
     public function quote($request)
     {   
-        $em = \Zend_Registry::get('em');
-        $quote = $em->getRepository("\App\Entity\Quote")->find($request->id);
+        $em = $this->entityManager;
+        $quote = $em->getRepository('\App\Entity\Quote')->find($request->id);
         $response = new \App_Webservice_Types_Response_QuoteResponse();
 
         if (!is_null($quote)) {

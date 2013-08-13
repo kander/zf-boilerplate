@@ -16,26 +16,28 @@ class Boilerplate_Controller_Helper_DependencyInjector
 
         foreach ($properties as $property) {
             if ($property->getDeclaringClass()->getName() ==
-               get_class($actionController)) {
+                get_class($actionController)
+            ) {
 
-                if ($property->getDocComment() &&
-                   $property->getDocComment()->hasTag('InjectService')) {
-                    
+                if ($property->getDocComment()
+                    && $property->getDocComment()->hasTag('InjectService')
+                ) {
+
                     $tag = $property->getDocComment()->getTag('InjectService');
 
                     if ($tag->getDescription()) {
 
-                        $sc = Zend_Registry::get('sc');
+                        $dic = Zend_Registry::get('pimple');
 
-                        $service = $sc->getService(
-                            trim(lcfirst($tag->getDescription()))
-                        );
+                        $serviceName = trim(lcfirst($tag->getDescription()));
+                        $service = $dic[$serviceName];
 
                         $property->setAccessible(true);
                         $property->setValue($actionController, $service);
-                    }
-                    else
+
+                    } else {
                         throw new Exception("No service key given");
+                    }
                 }
             }
         }
