@@ -7,27 +7,6 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
         Zend_Registry::set('config', $this->getOptions());
     }
     
-    public function _initAutoloaderNamespaces()
-    {
-        require_once APPLICATION_PATH .
-            '/../vendor/doctrine/common/lib/Doctrine/Common/ClassLoader.php';
-
-        require_once APPLICATION_PATH .
-            '/../library/Symfony/Component/Di/sfServiceContainerAutoloader.php';
-
-        sfServiceContainerAutoloader::register();
-        $autoloader = \Zend_Loader_Autoloader::getInstance();
-
-        $fmmAutoloader = new \Doctrine\Common\ClassLoader('App');
-        $autoloader->pushAutoloader(array($fmmAutoloader, 'loadClass'), 'App');
-
-        $fmmAutoloader = new \Doctrine\Common\ClassLoader('Boilerplate');
-        $autoloader->pushAutoloader(array($fmmAutoloader, 'loadClass'), 'Boilerplate');
-
-        $fmmAutoloader = new \Doctrine\Common\ClassLoader('Doctrine\DBAL\Migrations');
-        $autoloader->pushAutoloader(array($fmmAutoloader, 'loadClass'), 'Doctrine\DBAL\Migrations');
-    }
-
     public function _initModuleLayout()
     {
         $front = Zend_Controller_Front::getInstance();
@@ -41,7 +20,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
         $front = Zend_Controller_Front::getInstance()->registerPlugin($eh);
     }
 
-    public function _initServices()
+    public function _initDependencyInjectionContainer()
     {
         $diContainer = new Pimple();
 
